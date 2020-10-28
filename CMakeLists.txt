@@ -71,10 +71,8 @@ if(BUILD_DOCUMENTATION)
     add_subdirectory(doc)
 endif()
 
-find_package(OpenSSL REQUIRED)
-if(OPENSSL_FOUND)
-    message(STATUS "Using OpenSSL ${OPENSSL_VERSION}")
-endif()
+add_subdirectory(third_party/boringssl)
+include_directories(third_party/boringssl/src/include)
 
 find_package(Boost REQUIRED)
 

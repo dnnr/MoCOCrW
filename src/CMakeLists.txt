@@ -67,7 +67,7 @@ set(LIBRARY_PUBLIC_HEADERS
 
 add_library(${LIBRARY_NAME} SHARED ${LIBRARY_SOURCES} ${LIBRARY_PUBLIC_HEADERS})
 add_library(${PROJECT_NAME}::${LIBRARY_NAME} ALIAS ${LIBRARY_NAME})
-target_link_libraries(${LIBRARY_NAME} PUBLIC OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+target_link_libraries(${LIBRARY_NAME} PUBLIC ${CMAKE_BINARY_DIR}/third_party/boringssl/libssl.a ${CMAKE_BINARY_DIR}/third_party/boringssl/libcrypto.a Boost::boost pthread ${CMAKE_DL_LIBS})
 
 target_include_directories(${LIBRARY_NAME} INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

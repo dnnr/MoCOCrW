@@ -133,44 +133,48 @@ if(BUILD_TESTING) #set by Ctest. Also set in the integration build environment.
 
     target_link_libraries(openssltest ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
+    # set(SSL_LIBS OpenSSL::Crypto OpenSSL::SSL)
+    set(SSL_LIBS ${CMAKE_BINARY_DIR}/third_party/boringssl/libssl.a ${CMAKE_BINARY_DIR}/third_party/boringssl/libcrypto.a pthread ${CMAKE_DL_LIBS})
+
+
     target_link_libraries(asn1timetests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(keytests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(csrtests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(biotests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(hashtests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(utiltests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(x509tests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(crltests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(verificationtests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(dntests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(catests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(signaturetests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(asymencryptiontests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(rsa_padding_mode_tests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(symmencryptiontests
-        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+        ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(symmmemorytests
         ${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT}  Boost::boost)
     target_link_libraries(kdftests
-	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(mactests
-	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
     target_link_libraries(eciestests
-	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} OpenSSL::Crypto OpenSSL::SSL Boost::boost)
+	${GMOCK_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT} ${SSL_LIBS} Boost::boost)
 
     add_test(
         NAME OpenSSLTest
