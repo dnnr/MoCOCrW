@@ -1265,7 +1265,7 @@ void _EVP_PKEY_CTX_set_rsa_oaep_label(EVP_PKEY_CTX *ctx, unsigned char *l, int l
     OpensslCallIsNonNegative::callChecked(lib::OpenSSLLib::SSL_EVP_PKEY_CTX_set_rsa_oaep_label, ctx, l, llen);
 }
 
-int _EVP_PKEY_CTX_get_rsa_oaep_label(EVP_PKEY_CTX *ctx, unsigned char *l)
+int _EVP_PKEY_CTX_get_rsa_oaep_label(EVP_PKEY_CTX *ctx, const uint8_t **l)
 {
     return OpensslCallIsNonNegative::callChecked(lib::OpenSSLLib::SSL_EVP_PKEY_CTX_get_rsa_oaep_label, ctx, l);
 }
