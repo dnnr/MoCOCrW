@@ -1370,13 +1370,6 @@ SSL_HMAC_CTX_Ptr _HMAC_CTX_new()
     return createManagedOpenSSLObject<SSL_HMAC_CTX_Ptr>();
 }
 
-SSL_EC_KEY_Ptr _EC_KEY_oct2key(int nid, const std::vector<uint8_t> &buf)
-{
-    SSL_EC_KEY_Ptr key(OpensslCallPtr::callChecked(lib::OpenSSLLib::SSL_EC_KEY_new_by_curve_name, nid));
-    OpensslCallIsOne::callChecked(lib::OpenSSLLib::SSL_EC_KEY_oct2key, key.get(), buf.data(), buf.size());
-    return key;
-}
-
 void _EVP_PKEY_set1_EC_KEY(EVP_PKEY *pkey, EC_KEY *key)
 {
     OpensslCallIsOne::callChecked(lib::OpenSSLLib::SSL_EVP_PKEY_set1_EC_KEY, pkey, key);
