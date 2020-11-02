@@ -92,7 +92,8 @@ public:
     {
         std::vector<uint8_t> derivedKey(outputLength);
         const EVP_MD* digestFn = openssl::_getMDPtrFromDigestType(_hashFunction);
-        openssl::_ECDH_KDF_X9_63(derivedKey, password, salt, digestFn);
+        throw std::runtime_error("Cannot do this with BoringSSL!");
+        // openssl::_ECDH_KDF_X9_63(derivedKey, password, salt, digestFn);
         return derivedKey;
     }
 

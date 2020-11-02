@@ -933,11 +933,6 @@ int OpenSSLLib::SSL_PKCS5_PBKDF2_HMAC(const char *pass, int passlen, const unsig
                                                                            keylen, out);
 }
 
-int OpenSSLLib::SSL_ECDH_KDF_X9_63(unsigned char *out, size_t outlen, const unsigned char *Z, size_t Zlen,
-                                   const unsigned char *sinfo, size_t sinfolen, const EVP_MD *md) noexcept
-{
-    return OpenSSLLibMockManager::getMockInterface().SSL_ECDH_KDF_X9_63(out, outlen, Z, Zlen, sinfo, sinfolen, md);
-}
 int OpenSSLLib::SSL_HMAC_Init_ex(HMAC_CTX* ctx, const void* key, int key_len, const EVP_MD* md, ENGINE* impl) noexcept
 {
     return OpenSSLLibMockManager::getMockInterface().SSL_HMAC_Init_ex(ctx, key, key_len, md, impl);

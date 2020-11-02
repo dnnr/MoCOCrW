@@ -586,8 +586,6 @@ public:
     MOCK_METHOD1(SSL_EVP_PKEY_get0_EC_KEY, EC_KEY*(EVP_PKEY *pkey));
     MOCK_METHOD8(SSL_PKCS5_PBKDF2_HMAC, int(const char *pass, int passlen, const unsigned char *salt, int saltlen,
                                             int iter,const EVP_MD *digest, int keylen, unsigned char *out));
-    MOCK_METHOD7(SSL_ECDH_KDF_X9_63, int(unsigned char *out, size_t outlen, const unsigned char *Z, size_t Zlen,
-                                     const unsigned char *sinfo, size_t sinfolen, const EVP_MD *md));
 };
 
 /**
