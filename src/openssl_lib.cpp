@@ -933,10 +933,6 @@ HMAC_CTX* OpenSSLLib::SSL_HMAC_CTX_new() noexcept { return HMAC_CTX_new(); }
 
 void OpenSSLLib::SSL_HMAC_CTX_free(HMAC_CTX* ctx) noexcept { HMAC_CTX_free(ctx); }
 
-int OpenSSLLib::SSL_EC_KEY_oct2key(EC_KEY* eckey, const unsigned char* buf, size_t len) noexcept
-{
-    return EC_KEY_oct2key(eckey, buf, len, NULL);
-}
 EC_KEY* OpenSSLLib::SSL_EC_KEY_new() noexcept
 {
     return EC_KEY_new();

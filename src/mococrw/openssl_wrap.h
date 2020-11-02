@@ -1375,7 +1375,6 @@ std::vector<uint8_t> _HMAC_Final(HMAC_CTX* ctx);
 void _HMAC_Update(HMAC_CTX* ctx, const std::vector<uint8_t> &data);
 SSL_HMAC_CTX_Ptr _HMAC_CTX_new(void);
 
-SSL_EC_KEY_Ptr _EC_KEY_oct2key(int nid, const std::vector<uint8_t> &buf);
 void _EVP_PKEY_set1_EC_KEY(EVP_PKEY *pkey, EC_KEY *key);
 
 std::vector<uint8_t> _EC_KEY_key2buf(const EVP_PKEY* evp, point_conversion_form_t form);

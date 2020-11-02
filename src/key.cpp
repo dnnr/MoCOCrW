@@ -107,10 +107,11 @@ AsymmetricPublicKey AsymmetricPublicKey::fromECPoint(const std::shared_ptr<ECCSp
 {
     ensureEccCurveSupported(keySpec->curve());
 
-    SSL_EC_KEY_Ptr ec_key = _EC_KEY_oct2key(static_cast<int>(keySpec.get()->curve()), point);
+    throw std::runtime_error("Cannot do this with BoringSSL!");
+    // SSL_EC_KEY_Ptr ec_key = _EC_KEY_oct2key(static_cast<int>(keySpec.get()->curve()), point);
     SSL_EVP_PKEY_Ptr evp_key(_EVP_PKEY_new());
     /* As set1 is incrementing the internal ref count, we can and need to invoke the destructor of ec_key here */
-    _EVP_PKEY_set1_EC_KEY(evp_key.get(), ec_key.get());
+    // _EVP_PKEY_set1_EC_KEY(evp_key.get(), ec_key.get());
 
     return AsymmetricPublicKey{std::move(evp_key)};
 }

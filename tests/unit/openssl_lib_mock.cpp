@@ -938,10 +938,6 @@ void OpenSSLLib::SSL_HMAC_CTX_free(HMAC_CTX* ctx) noexcept
 {
     OpenSSLLibMockManager::getMockInterface().SSL_HMAC_CTX_free(ctx);
 }
-int OpenSSLLib::SSL_EC_KEY_oct2key(EC_KEY* eckey, const unsigned char* buf, size_t len) noexcept
-{
-    return OpenSSLLibMockManager::getMockInterface().SSL_EC_KEY_oct2key(eckey, buf, len);
-}
 EC_KEY* OpenSSLLib::SSL_EC_KEY_new() noexcept
 {
     return OpenSSLLibMockManager::getMockInterface().SSL_EC_KEY_new();
