@@ -124,7 +124,6 @@ public:
     static void SSL_X509V3_set_ctx_nodb(X509V3_CTX* ctx) noexcept;
     static void SSL_X509_EXTENSION_free(X509_EXTENSION* a) noexcept;
     static int SSL_X509_add_ext(X509* x, X509_EXTENSION* ex, int loc) noexcept;
-    static X509_EXTENSION* SSL_X509V3_EXT_conf_nid(lhash_st_CONF_VALUE* conf, X509V3_CTX* ctx, int ext_nid, char* value) noexcept;
     static const EVP_CIPHER* SSL_EVP_aes_256_cbc() noexcept;
     static int SSL_BIO_write(BIO* b, const void* buf, int len) noexcept;
     static int SSL_BIO_read(BIO* b, void* buf, int len) noexcept;

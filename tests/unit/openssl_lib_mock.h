@@ -111,10 +111,6 @@ public:
     virtual void SSL_X509V3_set_ctx_nodb(X509V3_CTX* ctx) = 0;
     virtual void SSL_X509_EXTENSION_free(X509_EXTENSION* a) = 0;
     virtual int SSL_X509_add_ext(X509* x, X509_EXTENSION* ex, int loc) = 0;
-    virtual X509_EXTENSION* SSL_X509V3_EXT_conf_nid(lhash_st_CONF_VALUE* conf,
-                                                    X509V3_CTX* ctx,
-                                                    int ext_nid,
-                                                    char* value) = 0;
     virtual const EVP_CIPHER* SSL_EVP_aes_256_cbc() = 0;
     virtual int SSL_BIO_write(BIO* b, const void* buf, int len) = 0;
     virtual int SSL_BIO_read(BIO* b, void* buf, int len) = 0;
@@ -410,10 +406,6 @@ public:
     MOCK_METHOD1(SSL_X509V3_set_ctx_nodb, void(X509V3_CTX*));
     MOCK_METHOD1(SSL_X509_EXTENSION_free, void(X509_EXTENSION*));
     MOCK_METHOD3(SSL_X509_add_ext, int(X509*, X509_EXTENSION*, int));
-    MOCK_METHOD4(SSL_X509V3_EXT_conf_nid, X509_EXTENSION*(lhash_st_CONF_VALUE*,
-                                                          X509V3_CTX*,
-                                                          int,
-                                                          char*));
     MOCK_METHOD0(SSL_EVP_aes_256_cbc, const EVP_CIPHER*());
     MOCK_METHOD3(SSL_BIO_write, int(BIO*, const void*, int));
     MOCK_METHOD3(SSL_BIO_read, int(BIO*, void*, int));

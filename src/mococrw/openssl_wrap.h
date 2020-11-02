@@ -1022,16 +1022,6 @@ void _EVP_CIPHER_CTX_set_padding(EVP_CIPHER_CTX *ctx, int pad);
 const EVP_CIPHER *_EVP_aes_256_cbc();
 
 /**
- * Creates a new X509 extension, identified by its NID, from its string representation.
- *
- * @param ext_nid the NID for the extension that should be created
- * @param ctx the context for the extension that should be created
- * @param value the value of the extension that should be created
- * @return a unique pointer to the created extension
- */
-SSL_X509_EXTENSION_Ptr _X509V3_EXT_conf_nid(int ext_nid, X509V3_CTX* ctx, std::string value);
-
-/**
  * Sets that there is no configuration database for a context.
  * @param ctx the context which is set
  */

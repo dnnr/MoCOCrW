@@ -48,9 +48,7 @@ public:
      */
     openssl::SSL_X509_EXTENSION_Ptr buildExtension(X509V3_CTX *context) const
     {
-        return openssl::_X509V3_EXT_conf_nid(static_cast<int>(getNid()),
-                                             context,
-                                             getConfigurationString());
+        return nullptr;
     }
 };
 
