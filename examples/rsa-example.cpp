@@ -75,7 +75,7 @@ int main(void)
 
     // you can use a different hash function for MGF1 than for OAEP padding if you want/need to
     // beware that this is really uncommon
-    auto maskGenerationFunction = std::make_shared<MGF1>(MGF1(DigestTypes::SHA3_256));
+    auto maskGenerationFunction = std::make_shared<MGF1>(MGF1(DigestTypes::SHA256));
 
     /* no argument to OAEPPadding is mandatory:
      * - default hashFunction = SHA256
