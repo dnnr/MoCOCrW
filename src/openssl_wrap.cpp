@@ -976,16 +976,6 @@ const EVP_CIPHER *_EVP_aes_256_cbc() {
     return OpensslCallPtr::callChecked(lib::OpenSSLLib::SSL_EVP_aes_256_cbc);
 }
 
-SSL_X509_EXTENSION_Ptr _X509V3_EXT_conf_nid(int ext_nid, X509V3_CTX* ctx, std::string value)
-{
-    return SSL_X509_EXTENSION_Ptr(OpensslCallPtr::callChecked(
-                                      lib::OpenSSLLib::SSL_X509V3_EXT_conf_nid,
-                                      nullptr,
-                                      ctx,
-                                      ext_nid,
-                                      const_cast<char*>(value.c_str())));
-}
-
 void _X509V3_set_ctx(X509V3_CTX* ctx,
                     X509* issuer,
                     X509* subject)
