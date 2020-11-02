@@ -1373,11 +1373,6 @@ void _PKCS5_PBKDF2_HMAC(const std::vector<uint8_t> pass,
                         const std::vector<uint8_t> salt, int iter,
                         const EVP_MD *digest, std::vector<uint8_t> &out);
 
-void _ECDH_KDF_X9_63(std::vector<uint8_t> &out,
-                     const std::vector<uint8_t> &Z,
-                     const std::vector<uint8_t> &sinfo,
-                     const EVP_MD *md);
-
 void _HMAC_Init_ex(HMAC_CTX *ctx, const std::vector<uint8_t> &key, const EVP_MD *md, ENGINE *impl);
 std::vector<uint8_t> _HMAC_Final(HMAC_CTX* ctx);
 void _HMAC_Update(HMAC_CTX* ctx, const std::vector<uint8_t> &data);

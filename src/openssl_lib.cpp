@@ -923,23 +923,6 @@ int OpenSSLLib::SSL_PKCS5_PBKDF2_HMAC(const char *pass, int passlen,
 }
 
 
-int OpenSSLLib::SSL_ECDH_KDF_X9_63(unsigned char *out, size_t outlen, const unsigned char *Z, size_t Zlen,
-                                   const unsigned char *sinfo, size_t sinfolen, const EVP_MD *md) noexcept
-{
-    /*
-     * The old name for ecdh_KDF_X9_63 (include/openssl/ec.h:1110)
-     * will be deprecated in openssl 1.1.2
-     * Comment:
-     *   *) Deprecate ECDH_KDF_X9_62() and mark its replacement as internal. Users
-     *      should use the EVP interface instead (EVP_PKEY_CTX_set_ecdh_kdf_type).
-     *      [Antoine Salon]
-     *
-     * As we have todo the intermediate step for ECIES, we can't use the newly suggested function. I used the old name
-     * as the new one is defined in an openssl internal header (crypto/include/internal/ec_int.h)
-     */
-    return ECDH_KDF_X9_62(out, outlen, Z, Zlen, sinfo, sinfolen, md);
-}
-
 int OpenSSLLib::SSL_HMAC_Init_ex(HMAC_CTX* ctx, const void* key, int key_len, const EVP_MD* md, ENGINE* impl) noexcept
 {
     return HMAC_Init_ex(ctx, key, key_len, md, impl);
