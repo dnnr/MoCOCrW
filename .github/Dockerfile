@@ -13,7 +13,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
         python3 \
         && rm -rf /var/lib/apt/lists/*
 
-# Install OpenSSL1.1.1
+# Verify that OpenSSL is not installed
+RUN ! dpkg -s libssl-dev
+
+# Build and install specific OpenSSL version
 RUN git clone https://github.com/openssl/openssl.git \
         && cd openssl
         && git checkout OpenSSL_1_1_1-stable \
