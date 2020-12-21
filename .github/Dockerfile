@@ -17,10 +17,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
 RUN ! dpkg -s libssl-dev
 
 # Build and install specific OpenSSL version
-RUN git clone https://github.com/openssl/openssl.git \
-        && cd openssl \
-        && git checkout OpenSSL_1_1_1-stable \
+RUN wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1-stable.tar.gz \
+        && tar xf OpenSSL_1_1_1-stable.tar.gz \
+        && cd openssl-OpenSSL_1_1_1-stable \
         && ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' \
         && make \
         && make install \
-        && rm -rf openssl
+        && cd ..
+        && rm -rf openssl-OpenSSL_1_1_1-stable
