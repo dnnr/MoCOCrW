@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: [g++, clang++]
+        compiler: ["g++", "clang++"]
+        flags: ["", "-fsanitize=address,leak,undefined"]
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
@@ -27,7 +28,13 @@ jobs:
         run: |
           mkdir build
           docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c \
-            'cmake -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} -DBUILD_TESTING=True -GNinja /src && ninja'
+            'cmake \
+              -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
+              -DCMAKE_CXX_FLAGS=${{ matrix.flags }} \
+              -DBUILD_TESTING=True \
+              -GNinja \
+              /src \
+            && ninja'
 
       - name: "Run tests"
         run: |
