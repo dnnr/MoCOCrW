@@ -22,7 +22,7 @@ RUN wget -O openssl.tar.gz https://github.com/openssl/openssl/archive/OpenSSL_1_
         && tar xf openssl.tar.gz --one-top-level --strip-components=1 \
         && cd openssl \
         && ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' \
-        && make \
-        && make install \
+        && make -j $(nproc) \
+        && make install_sw \
         && cd .. \
         && rm -rf openssl
