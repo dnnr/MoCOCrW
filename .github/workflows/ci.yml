@@ -27,7 +27,7 @@ jobs:
       - name: "Run tests"
         run: |
           mkdir build
-          docker run --rm -u $UID -v $PWD:/src:rw buildenv -w /src/build bash -c 'ctest -j $(nproc)'
+          docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c 'ctest -j $(nproc)'
 
           # apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
             # build-essential \
