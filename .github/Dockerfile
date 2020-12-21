@@ -18,7 +18,7 @@ RUN ! dpkg -s libssl-dev
 
 # Build and install specific OpenSSL version
 RUN git clone https://github.com/openssl/openssl.git \
-        && cd openssl
+        && cd openssl \
         && git checkout OpenSSL_1_1_1-stable \
         && ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' \
         && make \
