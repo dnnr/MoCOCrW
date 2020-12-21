@@ -36,15 +36,18 @@ jobs:
       - name: "Build MoCOCrW"
         run: |
           mkdir build
-          docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c \
+          docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c '
             'cmake \
-              -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
-              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
-              -DBUILD_TESTING=True \
-              -GNinja \
-              /src \
-            && ninja'
+              -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+              -DBUILD_TESTING=True
+              -GNinja
+              /src
+            && ninja
+            '
 
       - name: "Run tests"
         run: |
-          docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c 'ctest -j $(nproc)'
+          docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c '
+            ctest -j $(nproc)
+            '
