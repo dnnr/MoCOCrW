@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - openssl1.1
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: debian:stable
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+            build-essential \
+            cmake \
+            googletest \
+            libboost-dev \
+            ninja-build \
+            libssl-dev
+
+          mkdir build
+          cd build
+          cmake -DBUILD_TESTING=True -GNinja ../
+          ninja
