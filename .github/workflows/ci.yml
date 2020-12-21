@@ -23,7 +23,7 @@ jobs:
       - name: "Build MoCOCrW"
         run: |
           mkdir build
-          docker run --rm -u $UID -v $PWD:/src:rw buildenv -w /src/build bash -c 'cmake -DBUILD_TESTING=True -GNinja /src && ninja'
+          docker run --rm -u $UID -v -w /src/build $PWD:/src:rw buildenv bash -c 'cmake -DBUILD_TESTING=True -GNinja /src && ninja'
 
       - name: "Run tests"
         run: |
