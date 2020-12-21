@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - openssl1.1
+      # Just for testing (TODO: remove)
+      - github-actions-wip
   pull_request:
 
 jobs:
