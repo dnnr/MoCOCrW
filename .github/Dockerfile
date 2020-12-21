@@ -8,6 +8,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
         git \
         googletest \
         libboost-all-dev \
+        ninja-build \
         pkg-config \
         python3 \
         && rm -rf /var/lib/apt/lists/*
