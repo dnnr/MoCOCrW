@@ -18,11 +18,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-rec
 RUN ! dpkg -s libssl-dev
 
 # Build and install specific OpenSSL version
+# FIXME: We could do "make install_sw" here, which is much smaller, but one
+# unit test (CsrTest) depends on a valid openssl.cnf installed to /etc.
 RUN wget -O openssl.tar.gz https://github.com/openssl/openssl/archive/OpenSSL_1_1_1-stable.tar.gz \
         && tar xf openssl.tar.gz --one-top-level --strip-components=1 \
         && cd openssl \
         && ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' \
         && make -j $(nproc) \
-        && make install_sw \
+        && make install \
         && cd .. \
         && rm -rf openssl

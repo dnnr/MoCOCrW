@@ -11,21 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: ["g++"]
+        compiler: ["g++", "clang++"]
         build_type: [""]
         allowed_to_fail: [false]
         include:
-          # Currently, tests fail when ASAN is enabled or when clang is used.
-          # Until this is fixed, failures in matrix entries does not fail the
-          # build. TODO: Fix this.
+          # FIXME: Currently, tests fail when ASAN is enabled. Until this is
+          # fixed, failures in matrix entries does not fail the build.
           - compiler: "clang"
             build_type: "ASAN"
             allowed_to_fail: true
           - compiler: "g++"
             build_type: "ASAN"
-            allowed_to_fail: true
-          - compiler: "clang++"
-            build_type: ""
             allowed_to_fail: true
     continue-on-error: ${{ matrix.allowed_to_fail }}
     steps:
