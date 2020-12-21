@@ -36,13 +36,6 @@ jobs:
 
       - name: "Load Docker cache"
         uses: satackey/action-docker-layer-caching@v0.0.11
-        with:
-          # Maintain a separate cache for each branch (base_ref is the PR
-          # target branch):
-          key: docker-layer-caching-${{ github.base_ref }}-{hash}
-          restore-keys: |
-            docker-layer-caching-${{ github.base_ref }}
-            docker-layer-caching-
 
       - name: "Build Docker image"
         run: |
