@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 # Install MoCOCrW dependencies (except OpenSSL)
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
         build-essential \
         clang \
         cmake \
