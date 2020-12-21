@@ -9,20 +9,34 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: debian:stable
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
-            build-essential \
-            cmake \
-            googletest \
-            libboost-dev \
-            ninja-build \
-            libssl-dev
+      - name: Checkout
+        uses: actions/checkout@v2
 
+      - name: "Build Docker image"
+        run: |
+          docker build -t buildenv -f .github/Dockerfile
+
+      - name: "Build MoCOCrW"
+        run: |
           mkdir build
-          cd build
-          cmake -DBUILD_TESTING=True -GNinja ../
-          ninja
-          ctest -j$(nproc)
+          docker run --rm -ti -u $UID -v $PWD:/src:rw buildenv -w /src/build bash -c 'cmake -DBUILD_TESTING=True -GNinja /src && ninja'
+
+      - name: "Run tests"
+        run: |
+          mkdir build
+          docker run --rm -ti -u $UID -v $PWD:/src:rw buildenv -w /src/build bash -c 'ctest -j $(nproc)'
+
+          # apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install \
+            # build-essential \
+            # cmake \
+            # googletest \
+            # libboost-dev \
+            # ninja-build \
+            # libssl-dev
+
+          # mkdir build
+          # cd build
+          # cmake -DBUILD_TESTING=True -GNinja ../
+          # ninja
+          # ctest -j$(nproc)
