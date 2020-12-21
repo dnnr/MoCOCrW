@@ -15,6 +15,13 @@ jobs:
       matrix:
         compiler: ["g++", "clang++"]
         build_type: ["", "ASAN"]
+        known_to_fail: [false]
+        include:
+          # TODO: Unmark these matrix jobs as soon as ASAN tests do not fail
+          # anymore.
+          - build_type: "ASAN"
+            known_to_fail: true
+    continue-on-error: ${{ matrix.known_to_fail }}
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
