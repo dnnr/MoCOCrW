@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         compiler: ["g++", "clang++"]
-        flags: ["", "-fsanitize=address,leak,undefined"]
+        build_type: ["", "ASAN"]
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
           docker run --rm -u $UID -v $PWD:/src:rw -w /src/build buildenv bash -c \
             'cmake \
               -DCMAKE_CXX_COMPILER=${{ matrix.compiler }} \
-              -DCMAKE_CXX_FLAGS=${{ matrix.flags }} \
+              -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
               -DBUILD_TESTING=True \
               -GNinja \
               /src \
