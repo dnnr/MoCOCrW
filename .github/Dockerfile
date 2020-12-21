@@ -2,16 +2,15 @@ FROM ubuntu:focal
 
 # Install MoCOCrW dependencies (except OpenSSL)
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
-        build-essential \
+        ca-certificates \
         clang \
         cmake \
-        doxygen \
-        git \
+        g++ \
         googletest \
         libboost-all-dev \
+        make \
         ninja-build \
         pkg-config \
-        python3 \
         wget \
         && rm -rf /var/lib/apt/lists/*
 
