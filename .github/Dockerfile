@@ -24,5 +24,5 @@ RUN wget https://github.com/openssl/openssl/archive/OpenSSL_1_1_1-stable.tar.gz 
         && ./config -Wl,--enable-new-dtags,-rpath,'$(LIBRPATH)' \
         && make \
         && make install \
-        && cd ..
+        && cd .. \
         && rm -rf openssl-OpenSSL_1_1_1-stable
