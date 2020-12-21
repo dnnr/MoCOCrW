@@ -3,6 +3,7 @@ FROM ubuntu:focal
 # Install MoCOCrW dependencies (except OpenSSL)
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
         build-essential \
+        clang \
         cmake \
         doxygen \
         git \
