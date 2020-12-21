@@ -15,7 +15,7 @@ jobs:
 
       - name: "Build Docker image"
         run: |
-          docker build -t buildenv -f .github/Dockerfile
+          docker build -t buildenv -f .github/Dockerfile -
 
       - name: "Build MoCOCrW"
         run: |
