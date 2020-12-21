@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 
-# Install MoCOCrW dependencies
+# Install MoCOCrW dependencies (except OpenSSL)
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
         build-essential \
         cmake \
@@ -13,7 +13,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt -y install \
         python3 \
         && rm -rf /var/lib/apt/lists/*
 
-# Verify that OpenSSL is not installed
+# Verify that OpenSSL has not been installed inadvertently
 RUN ! dpkg -s libssl-dev
 
 # Build and install specific OpenSSL version
