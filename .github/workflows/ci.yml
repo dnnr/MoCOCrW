@@ -12,17 +12,7 @@ jobs:
     strategy:
       matrix:
         compiler: ["g++", "clang++"]
-        build_type: [""]
-        allowed_to_fail: [false]
-        include:
-          # FIXME: Currently, tests fail when ASAN is enabled. Until this is
-          # fixed, failures in matrix entries does not fail the build.
-          - compiler: "clang"
-            build_type: "ASAN"
-            allowed_to_fail: true
-          - compiler: "g++"
-            build_type: "ASAN"
-            allowed_to_fail: true
+        build_type: ["", "ASAN"]
     continue-on-error: ${{ matrix.allowed_to_fail }}
     steps:
       - name: "Checkout"
